@@ -1,1 +1,5 @@
-
+{
+  "btc": "@price_movements_btc",
+  "eth": "@price_movements_eth",
+  "sol": "@price_movements_sol"
+}

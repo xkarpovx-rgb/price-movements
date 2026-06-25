@@ -1,1 +1,27 @@
+name: Publish Crypto Updates
 
+on:
+  workflow_dispatch:
+
+  schedule:
+    - cron: "7,22,37,52 * * * *"
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install -r requirements.txt
+
+      - run: python bot.py
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          CHAT_BTC: ${{ secrets.CHAT_BTC }}
+          CHAT_ETH: ${{ secrets.CHAT_ETH }}
+          CHAT_SOL: ${{ secrets.CHAT_SOL }}
